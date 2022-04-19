@@ -52,9 +52,9 @@ if __name__ == "__main__":
         st.metric(label="Avg. Accuracy", value="81.48", delta="0.0")
     
     placeholder = st.empty()
-    seed_text = placeholder.text_input('Please input the seeds word below and press ENTER')
+    seed_text = placeholder.text_input('Please input the seeds word below and press ENTER', value='')
     
-    if (input != ''):
+    if (input != '' or len(input)>0):
         # load model
         model, tokenizer = get_trained_model()
         # generate new text
