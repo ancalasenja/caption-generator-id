@@ -11,7 +11,7 @@ def get_trained_model():
     model.summary()  # included to make it visible when model is reloaded
     # load the tokenizer
     tokenizer = load(open('tokenizer.pkl', 'rb'))
-    return model, tokenizer, session
+    return model, tokenizer
 
 # generate a sequence from a language model
 def generate_seq(model, tokenizer, seq_length, seed_text, n_words):
