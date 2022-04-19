@@ -51,9 +51,11 @@ if __name__ == "__main__":
     
     seed_text = st.text_input('Please input the seeds word below and press ENTER', value='')
     
+    # load model
+    @st.cache
+    model, tokenizer = get_model()
+    
     if (input != ''):
-        # load model
-        model, tokenizer = get_model()
         # generate new text
         generated = generate_seq(model, tokenizer, 50, seed_text, 30)
             
