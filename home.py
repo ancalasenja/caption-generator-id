@@ -2,14 +2,13 @@ import streamlit as st
 import numpy as np
 from keras.models import load_model
 from keras.preprocessing.sequence import pad_sequences
-from keras import backend as K
+import tensorflow.keras.backend as K
 from pickle import load
 
 @st.cache(allow_output_mutation=True)
 def get_trained_model():
     # load the model
     model = load_model('model.h5')
-    model._make_predict_function()
     model.summary()  # included to make it visible when model is reloaded
     session = K.get_session()
     # load the tokenizer
