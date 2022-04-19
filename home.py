@@ -52,7 +52,7 @@ if __name__ == "__main__":
     seed_text = st.text_input('Please input the seeds word below and press ENTER', value='')
     
     # load model
-    @st.cache()
+    #@st.cache()
     model, tokenizer = get_trained_model()
     
     if (input != ''):
