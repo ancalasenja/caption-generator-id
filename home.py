@@ -2,14 +2,19 @@ import streamlit as st
 import numpy as np
 from keras.models import load_model
 from keras.preprocessing.sequence import pad_sequences
+from keras import backend as K
 from pickle import load
 
+@st.cache(allow_output_mutation=True)
 def get_trained_model():
     # load the model
     model = load_model('model.h5')
+    model._make_predict_function()
+    model.summary()  # included to make it visible when model is reloaded
+    session = K.get_session()
     # load the tokenizer
     tokenizer = load(open('tokenizer.pkl', 'rb'))
-    return model, tokenizer
+    return model, tokenizer, session
 
 # generate a sequence from a language model
 def generate_seq(model, tokenizer, seq_length, seed_text, n_words):
@@ -43,7 +48,7 @@ if __name__ == "__main__":
         The model employs an LSTM (Long Short-Term Memory) architecture trained by thousands of captions acquired from multiple online sources.
         The average accuracy of the trained model is 81.48.
         
-        Note: *The trained model will be improved as the present generated sentence sometimes is a bit weird*.
+        Note: *The trained model will be improved as the present generated sentence sometimes is a bit weird and cheesy*.
 
         """)
         
@@ -52,10 +57,10 @@ if __name__ == "__main__":
     seed_text = st.text_input('Please input the seeds word below and press ENTER', value='')
     
     # load model
-    #@st.cache()
     model, tokenizer = get_trained_model()
     
     if (input != ''):
+        K.set_session(session)
         # generate new text
         generated = generate_seq(model, tokenizer, 50, seed_text, 30)
             
