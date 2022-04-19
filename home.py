@@ -4,7 +4,7 @@ from keras.models import load_model
 from keras.preprocessing.sequence import pad_sequences
 from pickle import load
 
-def loadmodel():
+def get_model():
     # load the model
     model = load_model('model.h5')
     # load the tokenizer
@@ -53,7 +53,7 @@ if __name__ == "__main__":
     
     if (input != ''):
         # load model
-        model, tokenizer = load_model()
+        model, tokenizer = get_model()
         # generate new text
         generated = generate_seq(model, tokenizer, 100, seed_text, 30)
             
