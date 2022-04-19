@@ -57,7 +57,6 @@ if __name__ == "__main__":
     model, tokenizer = get_trained_model()
     
     if (input != ''):
-        K.set_session(session)
         # generate new text
         generated = generate_seq(model, tokenizer, 50, seed_text, 30)
             
