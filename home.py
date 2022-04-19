@@ -38,7 +38,7 @@ def generate_seq(model, tokenizer, seq_length, seed_text, n_words):
 
 if __name__ == "__main__":
     st.title("""Caption Generator *Bahasa* 🇮🇩""")
-    st.caption("""This app generates caption for social media users (such as Instagram and Twitter) in *Bahasa* 🇮🇩 using a deep learning model.""")
+    st.write("""This app generates caption for social media users (such as Instagram and Twitter) in *Bahasa* 🇮🇩 using a deep learning model.""")
     
     with st.expander("ℹ️ - About this app"):     
         st.write("""
@@ -52,12 +52,11 @@ if __name__ == "__main__":
         st.metric(label="Avg. Accuracy", value="81.48", delta="0.0")
     
     placeholder = st.empty()
-    seed_text = placeholder.text_input('Please input the seeds word below and press ENTER', value='')
-    
-    # load model
-    model, tokenizer = get_trained_model()
+    seed_text = placeholder.text_input('Please input the seeds word below and press ENTER')
     
     if (input != ''):
+        # load model
+        model, tokenizer = get_trained_model()
         # generate new text
         generated = generate_seq(model, tokenizer, 50, seed_text, 30)
             
