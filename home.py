@@ -4,7 +4,7 @@ from keras.models import load_model
 from keras.preprocessing.sequence import pad_sequences
 from pickle import load
 
-def load_model():
+def loadmodel():
     # load the model
     model = load_model('model.h5')
     # load the tokenizer
