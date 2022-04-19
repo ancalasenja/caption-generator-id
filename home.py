@@ -55,7 +55,7 @@ if __name__ == "__main__":
         # load model
         model, tokenizer = get_model()
         # generate new text
-        generated = generate_seq(model, tokenizer, 100, seed_text, 30)
+        generated = generate_seq(model, tokenizer, 50, seed_text, 30)
             
         col1, col2 = st.columns(2)
 
