@@ -51,7 +51,7 @@ def get_demo(model, tokenizer):
             st.info(seed_text)
         with col2:
             st.write('Caption: ')
-            st.success(seed_text + generated)
+            st.success(seed_text +" "+ generated)
 
 if __name__ == "__main__":
     # load model
