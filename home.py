@@ -59,6 +59,7 @@ if __name__ == "__main__":
     
     st.title("""Caption Generator *Bahasa* 🇮🇩""")
     st.write("""This app generates caption for social media users (such as Instagram and Twitter) in *Bahasa* 🇮🇩 using a deep learning model.""")
+    st.caption("""Aplikasi ini menulis caption untuk pengguna sosmed (seperti Instagram dan Twitter) dalam Bahasa Indonesia menggunakan model pembelajaran mesin.""")
     
     with st.expander("ℹ️ - About this app"):     
         st.write("""
@@ -68,6 +69,7 @@ if __name__ == "__main__":
         Note: *The trained model will be improved as the present generated sentence sometimes is a bit weird and cheesy*.
 
         """)
+        st.caption("""Note: *Model latih masih dalam masa pengembangan, untuk saat ini caption yang dihasilkan masih cukup aneh.*""")
         
         st.metric(label="Avg. Accuracy", value="81.48", delta="0.0")
     
