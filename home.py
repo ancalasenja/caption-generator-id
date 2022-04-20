@@ -35,8 +35,28 @@ def generate_seq(model, tokenizer, seq_length, seed_text, n_words):
 		in_text += ' ' + out_word
 		result.append(out_word)
 	return ' '.join(result)
+    
+def get_demo(model, tokenizer):
+    placeholder = st.empty()
+    seed_text = placeholder.text_input('Please input the seeds word below and press ENTER', value='')
+    
+    if (seed_text != ''):
+        # generate new text
+        generated = generate_seq(model, tokenizer, 50, seed_text, 30)
+            
+        col1, col2 = st.columns(2)
+
+        with col1:
+            st.write('Input: ')
+            st.info(seed_text)
+        with col2:
+            st.write('Caption: ')
+            st.success(generated)
 
 if __name__ == "__main__":
+    # load model
+    model, tokenizer = get_trained_model()
+    
     st.title("""Caption Generator *Bahasa* 🇮🇩""")
     st.write("""This app generates caption for social media users (such as Instagram and Twitter) in *Bahasa* 🇮🇩 using a deep learning model.""")
     
@@ -51,22 +71,5 @@ if __name__ == "__main__":
         
         st.metric(label="Avg. Accuracy", value="81.48", delta="0.0")
     
-    placeholder = st.empty()
-    seed_text = placeholder.text_input('Please input the seeds word below and press ENTER', value='')
-    
-    if (input != '' or len(input)>0):
-        # load model
-        model, tokenizer = get_trained_model()
-        # generate new text
-        generated = generate_seq(model, tokenizer, 50, seed_text, 30)
-            
-        col1, col2 = st.columns(2)
-
-        with col1:
-            st.write('Input: ')
-            st.info(seed_text)
-        with col2:
-            st.write('Caption: ')
-            st.success(generated)
-
+    get_demo(model, tokenizer)
         
